@@ -1,21 +1,21 @@
-🐻 京程一灯 🏮BFF 脚手架初探
-├── README.md #帮助项目开发文件
-├── app.js #项目启动文件通过
+🐻BFF 脚手架初探  
+├── README.md #帮助项目开发文件  
+├── app.js #项目启动文件通过  
 ├── assets
-├── bin
-├── config
-├── controllers
-├── libs
-├── logs
-├── middlewares
-├── models
-├── node_modules
-├── npm-debug.log
-├── package-lock.json
-├── package.json
-├── tests
-├── views
-└── widgets
+├── bin  
+├── config  
+├── controllers  
+├── libs  
+├── logs  
+├── middlewares  
+├── models  
+├── node_modules  
+├── npm-debug.log  
+├── package-lock.json  
+├── package.json  
+├── tests  
+├── views  
+└── widgets  
 
 12 directories, 5 files
 
