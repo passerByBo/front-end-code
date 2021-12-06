@@ -10,8 +10,12 @@
     "server:dev": "scripty",
     "server:prod": "scripty",
     "start": "",
-    "yideng": "jscpd ./demos",
-    "build": "npm-run-all --parallel client:prod server:prod "
+    "jscpd": "jscpd ./demos",
+    "build": "npm-run-all --parallel client:prod server:prod ",
+    "win:server":"cross-env NODE_ENV=production gulp",
+    "win:client":"webpack --mode production",
+    "win:start":"cross-env NODE_ENV=production nodemon ./dist/app.js",
+    "win:build":"npm-run-all --parallel   win:server win:client"
   },
   "config": {
     "port": 3000

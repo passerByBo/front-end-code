@@ -28,7 +28,8 @@ module.exports = {
             return resutlt;
           },
           transformPath(targetPath, absolutePath) {
-            return targetPath.replace('src/web/components/', '');
+            return targetPath.replace('src\\web\\components\\', '');
+             return targetPath.replace('src/web/components/', '');
           },
         },
       ],
