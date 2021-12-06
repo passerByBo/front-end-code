@@ -23,6 +23,7 @@ for (let item of files) {
         template: `src/web/views/${dist}/pages/${template}.html`,
         chunks: ['runtime', entryKey],
         inject: false,
+        minify:false
       })
     );
   } else {

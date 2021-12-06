@@ -4,7 +4,7 @@ const pluginName = 'HtmlAfterPlugin';
 const assetsHelp = (data) => {
   let js = [];
   const getAssetsName = {
-    js: (item) => `<script src="${item}"></script>`,
+    js: (item) => `<script class="lazyload-js" src="${item}"></script>`,
   };
   for (let jsitem of data.js) {
     js.push(getAssetsName.js(jsitem));
@@ -32,6 +32,7 @@ class HtmlAfterPlugin {
         pluginName,
         (data, cb) => {
           let _html = data.html;
+          console.log( this.jsarr,_html)
           _html = _html.replace('<!--injectjs-->', this.jsarr.join(''));
           _html = _html.replace(/@components/g, '../../../components');
           _html = _html.replace(/@layouts/g, '../../layouts');

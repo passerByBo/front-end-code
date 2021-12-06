@@ -7,8 +7,12 @@
 {% endblock %}
 
 {% block content %}
-    {% include "@components/banner/banner.html" %}
+{% include "@components/banner/banner.html"%}
+{% include "@components/list/list.html"%}
+<div class="pjaxcontent">
     <h1>展示图书</h1>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
