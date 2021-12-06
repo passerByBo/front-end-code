@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bigPipe</title>
+</head>
+<body>
+    <div id="app">
+        核心页面
+    </div>
+
+    <section>
+        <div id="part1">loading</div>
+        <div id="part2">loading</div>
+    </section>
+
+    <script>
+        function addHtml(id, content){
+            document.querySelector(`#${id}`).innerHTML=content;
+        }
+    </script>
+</body>
+</html>
