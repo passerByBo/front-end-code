@@ -1,3 +1,4 @@
+import 'list.css'
 const list = {
     init() {
       $(document).on('click', '#js-btn', function (event) {

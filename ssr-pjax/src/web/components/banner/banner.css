@@ -1,0 +1,9 @@
+:root{
+    --bannerColor: orange;
+}
+
+.component-banner{
+    & ul a{
+        color:var(--bannerColor)
+    }
+}

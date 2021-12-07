@@ -1,13 +1,15 @@
 const argv = require('yargs-parser')(process.argv.slice(2));
 const _mode = argv.mode || 'development';
 const _mergeConfig = require(`./config/webpack.${_mode}.js`);
+const path = require('path');
 const { merge } = require('webpack-merge');
 const { sync } = require('glob');
 const { resolve } = require('path');
 const files = sync('./src/web/views/**/*.entry.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlAfterPlugin = require('./config/HtmlAfterPlugin');
-
+const { loader } = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 let _entry = {};
 let _plugins = [];
 for (let item of files) {
@@ -23,7 +25,7 @@ for (let item of files) {
         template: `src/web/views/${dist}/pages/${template}.html`,
         chunks: ['runtime', entryKey],
         inject: false,
-        minify:false
+        minify: false
       })
     );
   } else {
@@ -38,7 +40,32 @@ const webpackConfig = {
       name: 'runtime',
     },
   },
-  plugins: [..._plugins, new HtmlAfterPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader']
+      }
+    ]
+  },
+  plugins: [..._plugins, new HtmlAfterPlugin(),new MiniCssExtractPlugin(
+    {
+      filename: 'styles/[name].css',
+      chunkFilename: "[name].css",
+    }
+  )],
   resolve: {
     alias: {
       '@': resolve('src/web'),

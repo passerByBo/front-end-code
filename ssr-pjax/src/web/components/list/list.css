@@ -1,0 +1,9 @@
+:root{
+    --listTitleColor: yellowgreen
+}
+
+.component-list{
+    & h1{
+        color: var(--listTitleColor)
+    }
+}
