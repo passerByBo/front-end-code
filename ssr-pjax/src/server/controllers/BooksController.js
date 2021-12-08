@@ -1,6 +1,7 @@
 import Controller from './Controller';
 import cheerio from 'cheerio';
 import { Readable } from 'stream';
+import { createGzip } from 'zlib';
 class ApiController extends Controller {
   constructor() {
     super();
@@ -41,9 +42,12 @@ class ApiController extends Controller {
           htmlStream.push(null);
           ctx.type = 'html';
           ctx.status = 200;
+          ctx.res.setHeader('content-encoding', 'gzip')
+          const gz = createGzip();
           htmlStream.on('error', (err) => {
             reject(err)
           })
+            .pipe(gz)
             .pipe(ctx.res)
         })
       }

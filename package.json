@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "module-alias": "^2.2.2"
+  },
+  "dependencies": {
+    "awilix": "^5.0.1",
+    "koa": "^2.13.4"
+  }
+}
