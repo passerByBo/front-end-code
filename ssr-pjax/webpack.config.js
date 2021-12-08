@@ -15,7 +15,6 @@ let _plugins = [];
 for (let item of files) {
   // console.log(item)
   if (/.+\/([a-zA-Z]+-[a-zA-Z]+)(\.entry\.js)/g.test(item) == true) {
-    console.log(RegExp.$1);
     const entryKey = RegExp.$1;
     _entry[entryKey] = item;
     const [dist, template] = entryKey.split('-');
@@ -43,10 +42,6 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: 'babel-loader'
-      },
-      {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -57,15 +52,20 @@ const webpackConfig = {
             },
           },
           'postcss-loader']
-      }
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader'
+      },
+    
     ]
   },
-  plugins: [..._plugins, new HtmlAfterPlugin(),new MiniCssExtractPlugin(
-    {
-      filename: 'styles/[name].css',
-      chunkFilename: "[name].css",
-    }
-  )],
+  plugins: [..._plugins, new HtmlAfterPlugin(),
+  // new MiniCssExtractPlugin(
+  //   {
+  //     filename: 'styles/[name].css',
+  //   })
+  ],
   resolve: {
     alias: {
       '@': resolve('src/web'),

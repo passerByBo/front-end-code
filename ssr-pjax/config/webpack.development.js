@@ -21,7 +21,7 @@ module.exports = {
           from: 'src/web/components/**/*.html',
           to: '../components',
           transformPath(targetPath, absolutePath) {
-            // return targetPath.replace('src\\web\\components\\', '');
+            return targetPath.replace('src\\web\\components\\', '');
             return targetPath.replace('src/web/components/', '');
           },
         },
