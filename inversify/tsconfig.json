@@ -6,6 +6,9 @@
         "module" : "commonjs" , 
         "moduleResolution" : "node" , 
         "experimentalDecorators" : true , 
-        "emitDecoratorMetadata" : true 
+        "emitDecoratorMetadata" : true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strict": true
     } 
 }

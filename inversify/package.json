@@ -6,13 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:demo": "ts-node ./demo/app.ts",
-    "start": "ts-node app.ts"
+    "start": "ts-node app.ts",
+    "start:ioc": "ts-node ./xb-inversify/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/esprima": "^4.0.3",
     "@types/koa-router": "^7.4.4",
+    "esprima": "^4.0.1",
     "inversify": "^6.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "inversify-koa-utils": "^1.0.0",
