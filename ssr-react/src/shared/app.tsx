@@ -4,7 +4,7 @@ const App = () => {
     useEffect(() => {
        axios.get('/dev-api/getData')
     }, [])
-    return <h1>react-ssr</h1>
+    return <h1>react-ssr-new</h1>
 }
 
 export default App;
