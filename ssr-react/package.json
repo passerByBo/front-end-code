@@ -14,7 +14,8 @@
     "nodemon:server": "nodemon ./dist/app",
     "start:server": "run-p server:dev nodemon:server",
     "start:client": "run-s client:dev",
-    "start": "run-p start:server start:client"
+    "start": "run-p start:server start:client",
+    "start:prod": "run-s client:prod server:prod nodemon:server"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +29,7 @@
     "@babel/preset-typescript": "^7.16.5",
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
+    "@types/lodash": "^4.14.178",
     "@types/node": "^17.0.1",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
@@ -53,6 +55,7 @@
     "axios": "^0.24.0",
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
