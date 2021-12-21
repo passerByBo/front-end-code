@@ -1,19 +1,37 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var tsProject = ts.createProject('tsconfig-back.json');
+const babel = require('gulp-babel');
 const watch = require('gulp-watch');
 const entry = './src/server/*.ts';
 
 function buildConfig() {
     return gulp.src(entry)
-        .pipe(tsProject())
+        //gulp-typescript会报错koa-router.default
+        // .pipe(tsProject())
+        .pipe(babel({
+            babelrc: false,
+            presets: ["@babel/preset-typescript"],
+            plugins: [
+                ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                '@babel/plugin-transform-modules-commonjs'
+            ]
+        }))
         .pipe(gulp.dest('dist'))
 }
 
 function buildDev() {
     return watch(entry, { ignoreInitial: false}, () => {
         gulp.src(entry)
-            .pipe(tsProject())
+            // .pipe(tsProject())
+            .pipe(babel({
+                babelrc: false,
+                presets: ["@babel/preset-typescript"],
+                plugins: [
+                    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                    '@babel/plugin-transform-modules-commonjs'
+                ]
+            }))
             .pipe(gulp.dest('dist'))
     })
 }

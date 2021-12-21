@@ -12,7 +12,7 @@ router.get(["dev-api/getData"], async (ctx, next) => {
   ctx.body = {
       code: '0',
       message: 'succes',
-      data: '服务器返回的数据'
+      data: '服务器返回的数据success'
   };
 });
 
