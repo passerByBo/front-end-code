@@ -9,6 +9,7 @@ module.exports = merge(common, {
         static: {
             directory: join(__dirname, '../', '/dist/assets')
         },
+        historyApiFallback:true,
         allowedHosts: 'all',
         compress: false,
         port: 3001,

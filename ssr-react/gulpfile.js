@@ -3,7 +3,7 @@ var ts = require('gulp-typescript');
 var tsProject = ts.createProject('tsconfig-back.json');
 const babel = require('gulp-babel');
 const watch = require('gulp-watch');
-const entry = './src/server/*.ts';
+const entry = ['./src/**/**','!./src/client/**'];
 
 function buildConfig() {
     return gulp.src(entry)
@@ -11,7 +11,7 @@ function buildConfig() {
         // .pipe(tsProject())
         .pipe(babel({
             babelrc: false,
-            presets: ["@babel/preset-typescript"],
+            presets: ["@babel/preset-typescript","@babel/preset-react"],
             plugins: [
                 ["@babel/plugin-proposal-decorators", { "legacy": true }],
                 '@babel/plugin-transform-modules-commonjs'
@@ -26,7 +26,7 @@ function buildDev() {
             // .pipe(tsProject())
             .pipe(babel({
                 babelrc: false,
-                presets: ["@babel/preset-typescript"],
+                presets: ["@babel/preset-typescript","@babel/preset-react"],
                 plugins: [
                     ["@babel/plugin-proposal-decorators", { "legacy": true }],
                     '@babel/plugin-transform-modules-commonjs'
