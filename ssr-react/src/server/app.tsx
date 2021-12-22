@@ -1,8 +1,7 @@
 import Koa from "koa";
 import Router, { IRouterContext } from "koa-router";
 import fs from "fs";
-import { resolve, join } from "path";
-import path from "path/posix";
+import {  join } from "path";
 import serve from 'koa-static';
 import { config } from "./config";
 import { renderToString } from 'react-dom/server';
