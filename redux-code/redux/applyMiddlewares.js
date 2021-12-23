@@ -1,5 +1,5 @@
 import compose from './compose.js'
-export default function applyMiddlewares(...middlewares) {
+export default function applyMiddlewares(...middlewares = []) {
     return (oldCreateStore) => {
         return (reducer, initState) => {
             const store = oldCreateStore(reducer, initState);
