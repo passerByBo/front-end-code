@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写redux</title>
+</head>
+
+<body>
+    <script type="module">
+        import { createStore, combineReducers, applyMiddlewares, bindActionCreators } from './redux/index.js';
+        import timmerMiddleware from './middlewares/timmerMiddleware.js';
+        import loggerMiddleware from './middlewares/loggerMiddleware.js';
+        import exceptionMiddleware from './middlewares/exceptionMiddleware.js';
+        import { setName, setDescription } from './actions/info.js';
+        import { increment, decrement } from './actions/counter.js';
+
+        import counter from './reducers/counter.js';
+        import info from './reducers/info.js';
+
+        const reducer = combineReducers({
+            info,
+            counter
+        })
+        const rewriteDispath = applyMiddlewares(exceptionMiddleware,timmerMiddleware,loggerMiddleware)
+        // const rewriteDispath = applyMiddlewares()
+        const store = createStore(reducer, {}, rewriteDispath);
+
+        // let timmer = timmerMiddleware(store);
+        // let logger = loggerMiddleware(store);
+        // let exception = exceptionMiddleware(store);
+
+
+        // let next = store.dispatch;
+        // store.dispatch = exception(timmer(logger(next)))
+
+
+        store.subscribe((state) => {
+            console.log('1:', store.getState())
+        })
+
+        const actions = bindActionCreators({
+            setName,
+            setDescription,
+            increment,
+            decrement
+        }, store.dispatch)
+
+        console.log(actions)
+
+        actions.setName('石晓波');
+        actions.increment();
+        actions.decrement();
+        actions.setDescription('学习中！')
+
+       
+
+        // store.dispatch({
+        //     type: 'INCREMENT'
+        // })
+        // store.dispatch({
+        //     type: 'INCREMENT'
+        // })
+        // store.dispatch({
+        //     type: 'DECREMENT'
+        // })
+        // store.dispatch({
+        //     type: 'SET_NAME',
+        //     name: '石晓波'
+        // })
+        // store.dispatch({
+        //     type: 'SET_DESCRIPTION',
+        //     description: '搬砖工~~'
+        // })
+    </script>
+</body>
+
+</html>
