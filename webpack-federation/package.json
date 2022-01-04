@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts":{
+    "init":"lerna init",
+    "build":"lerna run --parallel build",
+    "start":"lerna run --parallel start"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
